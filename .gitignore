@@ -1,0 +1,17 @@
+# CMake
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+
+# Compiled files
+*.o
+*.a
+*.so
+
+# VS Code (lokale Einstellungen)
+.vscode/
+
+# SELinux build artifacts
+*.mod
+*.pp
