@@ -9,13 +9,12 @@ using boost::asio::local::stream_protocol;
 
 int main() {
 
-    std::cout << "Hello from Server\n";
+    std::cout << "Server started \n";
 
 
     const std::string socket_path = "/tmp/uds.sock";
 
     std::remove(socket_path.c_str());
-
 
 
 
@@ -31,14 +30,14 @@ int main() {
 
     while (true) {
 
-        std::cout << "Waiting on ";
+        std::cout << "Waiting on \n ";
         stream_protocol::socket socket(io_context);
 
         acceptor.accept(socket);
 
     
-        std::string message = "Hello from Server";
-        boost::asio::write(socket, boost::asio::buffer(message));
+        // std::string message = "Hello from Server";
+        // boost::asio::write(socket, boost::asio::buffer(message));
 
         try {
             while (true) {
@@ -50,10 +49,10 @@ int main() {
 
                 std::string message(buffer, n);
 
-                std::cout << "Client: " << message;
+                std::cout << "Client: " << message << std::endl;
 
                 // Antwort an Client
-                std::string response = "Server received: " + message;
+                std::string response = "Server received: " + message + "\n";
 
                 boost::asio::write(
                     socket,

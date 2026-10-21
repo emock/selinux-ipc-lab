@@ -1,0 +1,22 @@
+
+
+
+policy_module(ipc, 0.2)
+
+require {
+	type unconfined_t;
+	attribute file_type;
+}
+
+
+type client_exec_t;
+typeattribute client_exec_t file_type;
+
+type client_t;
+
+
+allow unconfined_t client_t: process transition;
+
+allow client_t client_exec_t : file entrypoint;
+
+type_transition unconfined_t client_exec_t:process client_t;
